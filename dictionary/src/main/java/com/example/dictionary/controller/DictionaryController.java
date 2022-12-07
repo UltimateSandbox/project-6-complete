@@ -1,5 +1,6 @@
 package com.example.dictionary.controller;
 
+import com.example.dictionary.exception.WordNotFoundException;
 import com.example.dictionary.model.Entry;
 import com.example.dictionary.service.DictionaryService;
 import org.slf4j.Logger;
@@ -22,7 +23,7 @@ public class DictionaryController {
     }
 
     @GetMapping("/getWord/{word}")
-    public Entry getWord(@PathVariable String word) {
+    public Entry getWord(@PathVariable String word) throws WordNotFoundException {
 
         StopWatch sw = new StopWatch();
         sw.start();

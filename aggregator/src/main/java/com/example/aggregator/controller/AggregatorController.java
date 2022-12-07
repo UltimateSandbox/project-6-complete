@@ -32,6 +32,7 @@ public class AggregatorController {
         return service.getWordsThatContainSuccessiveLettersAndStartsWith(chars);
     }
 
+    // TODO gets added per instructions
     @GetMapping("/getAllPalindromes")
     public List<Entry> getAllPalindromes() {
 

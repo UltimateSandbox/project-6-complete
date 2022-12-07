@@ -34,6 +34,7 @@ public class AggregatorService {
         return common;
     }
 
+    // TODO gets added per instructions
     public List<Entry> getAllPalindromes() {
 
         final List<Entry> candidates = new ArrayList<>();
