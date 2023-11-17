@@ -1,0 +1,5 @@
+com\example\dictionary\controller\DictionaryController.class
+com\example\dictionary\DictionaryApplication.class
+com\example\dictionary\model\Entry.class
+com\example\dictionary\service\DictionaryService.class
+com\example\dictionary\reference\DictionaryReference.class
