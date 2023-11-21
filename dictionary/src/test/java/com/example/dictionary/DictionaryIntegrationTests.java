@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Slf4j
-class HelloIntegrationTests {
+class DictionaryIntegrationTests {
 
     @Autowired
     private WebApplicationContext context;
@@ -45,8 +45,8 @@ class HelloIntegrationTests {
     @Test
     void messageTest() throws Exception {
 
-        /*ResultActions resultActions = this.mockMvc
-                .perform(MockMvcRequestBuilders.get("/hello/getMessage")
+        ResultActions resultActions = this.mockMvc
+                .perform(MockMvcRequestBuilders.get("/getWord/hello")
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk());
@@ -55,11 +55,12 @@ class HelloIntegrationTests {
         String content = result.getResponse().getContentAsString();
         Entry messageObject = objectMapper.readValue(content, Entry.class);
 
-        String expectedMessage = "Hello";
+        String expectedMessage = "See Halloo.";
         String actualMessage = messageObject.getDefinition();
 
+        log.info("Expected: [" + expectedMessage + "]");
         log.info("Actual: [" + actualMessage + "]");
-        assertEquals(expectedMessage, actualMessage);*/
+        assertEquals(expectedMessage, actualMessage);
     }
 
 }
