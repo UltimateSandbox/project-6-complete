@@ -1,6 +1,0 @@
-com\example\aggregator\AggregatorApplication.class
-com\example\aggregator\controller\AggregatorController.class
-com\example\aggregator\client\AggregatorRestClient.class
-com\example\aggregator\service\AggregatorService.class
-com\example\aggregator\model\Entry.class
-com\example\aggregator\config\AggregatorConfig.class

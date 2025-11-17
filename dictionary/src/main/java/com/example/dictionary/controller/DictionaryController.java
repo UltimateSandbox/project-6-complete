@@ -5,6 +5,8 @@ import com.example.dictionary.model.Entry;
 import com.example.dictionary.service.DictionaryService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -83,28 +85,6 @@ public class DictionaryController {
         return entries;
     }
 
-    // TODO complete for project
-    @GetMapping("/getWordsEndingWith/{value}")
-    public List<Entry> getWordsEndingWith(@PathVariable String value) {
-
-        StopWatch sw = new StopWatch();
-        sw.start();
-        List<Entry> entries = this.dictionaryService.getWordsEndingWith(value);
-        sw.stop();
-
-        long nanoSeconds = sw.getLastTaskTimeNanos();
-        String message = new StringBuilder().append("Retrieved entries for words ending with [")
-                                            .append(value)
-                                            .append("] containing ")
-                                            .append(entries.size())
-                                            .append(" entries in ")
-                                            .append(nanoSeconds / 1000000.0)
-                                            .append("ms")
-                                            .toString();
-        logger.info(message);
-        return entries;
-    }
-
     @GetMapping("/getWordsThatContainConsecutiveLetters")
     public List<Entry> getWordsThatContainConsecutiveLetters() {
 
@@ -124,5 +104,46 @@ public class DictionaryController {
                                             .toString();
         logger.info(message);
         return entries;
+    }
+
+    // TODO complete for project
+    @GetMapping("/getWordsEndingWith/{value}")
+    public List<Entry> getWordsEndingWith(@PathVariable String value) {
+
+        StopWatch sw = new StopWatch();
+        sw.start();
+        List<Entry> entries = this.dictionaryService.getWordsEndingWith(value);
+        sw.stop();
+
+        long nanoSeconds = sw.getLastTaskTimeNanos();
+        String message = new StringBuilder().append("Retrieved entries for words ending with [")
+                .append(value)
+                .append("] containing ")
+                .append(entries.size())
+                .append(" entries in ")
+                .append(nanoSeconds / 1000000.0)
+                .append("ms")
+                .toString();
+        logger.info(message);
+        return entries;
+    }
+
+    @QueryMapping
+    public Entry entryByWord(@Argument String word) throws WordNotFoundException {
+
+        StopWatch sw = new StopWatch();
+        sw.start();
+        Entry entry = this.dictionaryService.getWord(word);
+        sw.stop();
+
+        long nanoSeconds = sw.getLastTaskTimeNanos();
+        String message = new StringBuilder().append("Retrieved entry for [")
+                .append(word)
+                .append("] in ")
+                .append(nanoSeconds / 1000000.0)
+                .append("ms")
+                .toString();
+        logger.info(message);
+        return entry;
     }
 }

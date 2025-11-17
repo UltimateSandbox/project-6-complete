@@ -1,4 +1,6 @@
 target/
+aggregator/target
+dictionary/target
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**
 !**/src/test/**
